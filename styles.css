@@ -1,0 +1,714 @@
+menu,
+ol,
+ul {
+  padding: 0;
+}
+
+dd {
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  min-width: 320px;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background: url("./img/wallpaper.jpg") no-repeat fixed center center;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+html ul li, body ul li {
+  list-style: none;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game__container {
+  opacity: 1;
+  transition: opacity 0.7s ease-in-out;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 50px 30px;
+  border-radius: 3px;
+  width: calc(100% - 60px);
+}
+@media screen and (max-height: 970px) {
+  .game__container {
+    padding: 15px 30px;
+  }
+}
+.game__board {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding: 15px 15px 15px 15px;
+  position: relative;
+  z-index: 1;
+}
+.game__board:before {
+  position: absolute;
+  content: "";
+  background-image: url("./img/bg.jpg");
+  background-size: contain;
+  top: 0;
+  left: 0;
+  opacity: 0.7;
+  width: 100%;
+  height: 100%;
+}
+.game__instructions {
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.625rem;
+  text-align: center;
+}
+@media screen and (max-width: 530px) {
+  .game__instructions {
+    font-size: 1.325rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .game__instructions {
+    font-size: 1.125rem;
+  }
+}
+@media screen and (max-width: 540px) {
+  .game__instructions {
+    display: none;
+  }
+}
+.game__size {
+  margin-bottom: 20px;
+  position: relative;
+  width: calc(100% + 30px);
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 590px) {
+  .game__size {
+    margin-bottom: 0;
+  }
+}
+.game__sound {
+  display: block;
+  width: 25px;
+  height: 25px;
+  padding: 2px;
+  margin-left: 20px;
+  flex: 0 0 auto;
+}
+.game__sound:hover {
+  cursor: pointer;
+  background-color: #d0ac4c;
+  border-radius: 5px;
+}
+
+.header {
+  width: calc(100% + 30px);
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+@media screen and (max-width: 590px) {
+  .header {
+    margin-bottom: 5px;
+    align-items: end;
+    flex-direction: column-reverse;
+  }
+}
+.header > * {
+  flex: 1 1 auto;
+}
+.header__link {
+  font-family: "Rock Salt", sans-serif;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgb(61, 57, 68);
+}
+.header__link span:first-child {
+  font-size: 3.5rem;
+}
+@media screen and (max-width: 590px) {
+  .header__link {
+    width: 100%;
+    flex-direction: row;
+    column-gap: 15px;
+    margin-bottom: 20px;
+  }
+  .header__link span:first-child {
+    font-size: 2.5rem;
+  }
+}
+@media screen and (max-width: 383px) {
+  .header__link {
+    font-size: 1.3rem;
+  }
+}
+
+.info {
+  max-width: 210px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.325rem;
+  margin-right: 40px;
+}
+@media screen and (max-width: 590px) {
+  .info {
+    flex-direction: row;
+    font-size: 1.125rem;
+    column-gap: 10px;
+    max-width: 100%;
+    width: 100%;
+    margin-right: 0;
+  }
+}
+.info__top-row, .info__bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 5px;
+  justify-content: space-between;
+}
+@media screen and (max-width: 590px) {
+  .info__top-row, .info__bottom-row {
+    column-gap: 5px;
+    flex-wrap: wrap;
+    flex: 1 1 auto;
+    justify-content: unset;
+  }
+}
+.info__start, .info__reset, .info__score {
+  height: 30px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3a944e;
+  border-radius: 5px;
+  color: lightyellow;
+}
+@media screen and (max-width: 590px) {
+  .info__start, .info__reset, .info__score {
+    padding: 3px;
+    width: initial;
+    flex: 1 1 auto;
+  }
+}
+.info__start:hover, .info__reset:hover, .info__score:hover {
+  cursor: pointer;
+}
+.info__reset {
+  background-color: rgb(92, 79, 99);
+}
+.info__score {
+  width: 100%;
+}
+@media screen and (max-width: 590px) {
+  .info__score {
+    width: initial;
+  }
+}
+.info__start {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(218, 61, 42, 0.8);
+}
+
+.moves, .time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  color: #3d3944;
+  font-weight: bold;
+  outline: 2px solid rgb(61, 57, 68);
+}
+@media screen and (max-width: 590px) {
+  .moves, .time {
+    flex-direction: row;
+    column-gap: 5px;
+    height: 35px;
+    margin-bottom: 0;
+  }
+}
+
+.time__count {
+  letter-spacing: 1px;
+}
+
+.tiles {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.row {
+  display: flex;
+  flex: 0 1 auto;
+  width: 100%;
+  height: 100%;
+}
+
+.cell {
+  flex: 1 1 25%;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-family: "Architects Daughter", sans-serif;
+  font-weight: bold;
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3d3944;
+  outline: 2px solid rgb(61, 57, 68);
+  transform: translate(0, 0);
+  z-index: 2;
+}
+.cell_animate {
+  transition: transform 0.25s ease-in-out;
+}
+.cell:not(:last-child) {
+  margin-right: 10px;
+}
+.cell:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+.cell:not(.empty):hover {
+  cursor: pointer;
+}
+@media screen and (max-width: 400px) {
+  .cell {
+    font-size: 3rem;
+  }
+}
+@media screen and (max-width: 560px) {
+  .cell_5 {
+    font-size: 3.5rem;
+  }
+}
+@media screen and (max-width: 490px) {
+  .cell_5 {
+    font-size: 3rem;
+    border-radius: 7px;
+    -webkit-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    -moz-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+  }
+}
+@media screen and (max-width: 400px) {
+  .cell_5 {
+    border-radius: 5px;
+    font-size: 2.25rem;
+    margin-bottom: 5px;
+  }
+  .cell_5:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+.cell_6 {
+  font-size: 2.75rem;
+}
+@media screen and (max-width: 560px) {
+  .cell_6 {
+    font-size: 2.4rem;
+  }
+}
+@media screen and (max-width: 490px) {
+  .cell_6 {
+    font-size: 2rem;
+    border-radius: 8px;
+    -webkit-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    -moz-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    margin-bottom: 7px;
+  }
+  .cell_6:not(:last-child) {
+    margin-right: 7px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .cell_6 {
+    font-size: 1.75rem;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+  .cell_6:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+.cell_7 {
+  font-size: 2.25rem;
+  border-radius: 6px;
+}
+@media screen and (max-width: 560px) {
+  .cell_7 {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 490px) {
+  .cell_7 {
+    font-size: 2rem;
+    -webkit-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    -moz-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    margin-bottom: 7px;
+  }
+  .cell_7:not(:last-child) {
+    margin-right: 7px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .cell_7 {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .cell_7 {
+    font-size: 1.25rem;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+  .cell_7:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+.cell_8 {
+  border-radius: 6px;
+  font-size: 2rem;
+}
+@media screen and (max-width: 560px) {
+  .cell_8 {
+    font-size: 1.8rem;
+    margin-bottom: 7px;
+  }
+  .cell_8:not(:last-child) {
+    margin-right: 7px;
+  }
+}
+@media screen and (max-width: 490px) {
+  .cell_8 {
+    font-size: 1.5rem;
+    -webkit-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    -moz-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    margin-bottom: 5px;
+  }
+  .cell_8:not(:last-child) {
+    margin-right: 5px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .cell_8 {
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .cell_8 {
+    font-size: 1rem;
+    border-radius: 3px;
+    margin-bottom: 3px;
+  }
+  .cell_8:not(:last-child) {
+    margin-right: 3px;
+  }
+}
+
+.empty {
+  background-color: rgb(92, 79, 99);
+  outline: 2px solid rgb(61, 57, 68);
+  color: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+.frame-size {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: #3d3944;
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.125rem;
+}
+
+.size {
+  margin-left: 5px;
+}
+
+.size-list {
+  color: #3d3944;
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.325rem;
+}
+@media screen and (max-width: 530px) {
+  .size-list {
+    font-size: 1.125rem;
+  }
+}
+.size-list a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #3d3944;
+  padding: 0 5px;
+}
+
+.other-sizes {
+  display: flex;
+  justify-content: center;
+}
+@media screen and (max-width: 590px) {
+  .other-sizes {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.other-size:hover, .other-size_active {
+  border-radius: 3px;
+  background-color: #3a944e;
+}
+
+.hidden {
+  display: none;
+}
+
+.top-result__container {
+  z-index: 1;
+  min-width: 320px;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  background: url("./img/wallpaper.jpg") center center;
+  background-size: cover;
+  position: fixed;
+  border-radius: 5px;
+  left: 0;
+  right: 0;
+  transition: top 0.5s ease-in-out;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 75px;
+  height: 75px;
+  background-image: url("./img/cross.svg");
+  background-size: 75px 75px;
+  cursor: pointer;
+}
+.close-btn:hover:before {
+  background-color: #d2d1d7 !important;
+}
+.close-btn:before {
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: -1;
+  content: "";
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  display: block;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
+}
+@media screen and (max-width: 560px) {
+  .close-btn {
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+  }
+  .close-btn:before {
+    width: 25px;
+    height: 25px;
+    top: calc(50% - 12.5px);
+    left: calc(50% - 12.5px);
+  }
+}
+@media screen and (max-width: 450px) {
+  .close-btn {
+    width: 40px;
+    height: 40px;
+    background-size: 40px 40px;
+  }
+  .close-btn:before {
+    width: 20px;
+    height: 20px;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+  }
+}
+
+.board {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.board__title {
+  font-family: "Rock Salt", sans-serif;
+  font-size: 2rem;
+  background-color: rgba(255, 255, 255, 0.65);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 560px) {
+  .board__title {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 450px) {
+  .board__title {
+    font-size: 1.25rem;
+  }
+}
+@media screen and (max-width: 360px) {
+  .board__title {
+    font-size: 1rem;
+  }
+}
+.board__list {
+  color: #d2d1d7;
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.525rem;
+}
+@media screen and (max-width: 560px) {
+  .board__list {
+    font-size: 1.125rem;
+  }
+}
+.board__list_no-result {
+  text-align: center;
+  padding: 80px 50px !important;
+  font-size: 2rem;
+}
+@media screen and (max-width: 560px) {
+  .board__list_no-result {
+    font-size: 1.5rem;
+    padding: 65px 35px !important;
+  }
+}
+@media screen and (max-width: 450px) {
+  .board__list_no-result {
+    font-size: 1.25rem;
+  }
+}
+@media screen and (max-width: 360px) {
+  .board__list_no-result {
+    padding: 30px 20px !important;
+  }
+}
+.board__list > li {
+  list-style: none;
+  margin-bottom: 5px;
+  padding: 8px 8px;
+  border-radius: 5px;
+  border: #d2d1d7 solid;
+  background-color: rgba(61, 57, 68, 0.7);
+}
+.board__list > li > span {
+  font-weight: bold;
+  font-size: larger;
+}
+
+.victory {
+  max-width: 500px;
+  position: absolute;
+  top: 100%;
+  z-index: 10;
+  transition: top 1.5s ease-in-out;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 15px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.victory__pusheen {
+  z-index: 10;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+.victory__pusheen img {
+  width: 100%;
+}
+.victory__text {
+  background: #ffeab9;
+  padding: 25px;
+  margin-top: -20px;
+  border-radius: 10px;
+  color: #4a280c;
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+  line-height: 150%;
+  border: 4px solid #4a280c;
+  transition: margin-top 0.1s linear;
+}
+@media screen and (max-width: 500px) {
+  .victory__text {
+    font-size: 1.15rem;
+  }
+}
+.victory__text > span {
+  font-weight: bolder;
+}
+.victory .play-again {
+  padding: 10px 20px;
+  background-color: #bae8f4;
+  color: black;
+  font-weight: bolder;
+  letter-spacing: 2px;
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  border: 2px solid #4a280c;
+  margin-top: -26px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 135px;
+}
+.victory .play-again:hover {
+  cursor: pointer;
+  background-color: #abd6e1;
+}
+
+/*# sourceMappingURL=styles.css.map */

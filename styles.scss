@@ -1,0 +1,687 @@
+menu,
+ol,
+ul {
+  padding: 0;
+}
+dd {
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  min-width: 320px;
+  position: relative;
+  overflow: hidden;
+
+  background-size: cover;
+  background: url("./img/wallpaper.jpg") no-repeat fixed center center;
+
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+   user-select: none;
+  ul li {
+    list-style: none;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game {
+  &__container{
+    opacity: 1;
+    transition: opacity 0.7s ease-in-out;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 50px 30px;
+    border-radius: 3px;
+    width: calc(100% - 60px);
+
+    @media screen and (max-height: 970px) {
+      padding: 15px 30px;
+    }
+  }
+  &__board{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    padding: 15px 15px 15px 15px;
+    position: relative;
+    z-index: 1;
+
+    &:before{
+      position: absolute;
+      content: '';
+      background-image: url("./img/bg.jpg");
+      background-size: contain;
+      top: 0;
+      left: 0;
+      opacity: 0.7;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__instructions{
+    font-family: "Architects Daughter", sans-serif;
+    font-size: 1.625rem;
+    text-align: center;
+    @media screen and (max-width: 530px){
+      font-size: 1.325rem;
+    }
+    @media screen and (max-width: 400px){
+      font-size: 1.125rem;
+    }
+    @media screen and (max-width: 540px) {
+      display: none;
+    }
+  }
+
+  &__size {
+    margin-bottom: 20px;
+    position: relative;
+    width: calc(100% + 30px);
+    display: flex;
+    justify-content: center;
+
+    @media screen and (max-width: 590px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__sound {
+    display: block;
+    width: 25px;
+    height: 25px;
+    padding: 2px;
+    margin-left: 20px;
+    flex: 0 0 auto;
+    &:hover {
+      cursor: pointer;
+      background-color: #d0ac4c;
+      border-radius: 5px;
+    }
+  }
+}
+
+.header {
+  width: calc(100% + 30px);
+  display: flex;
+
+  margin-bottom: 10px;
+  justify-content: space-between;
+  @media screen and (max-width: 590px) {
+    margin-bottom: 5px;
+    align-items: end;
+    flex-direction: column-reverse;
+  }
+
+  & > * {
+    flex: 1 1 auto;
+  }
+
+  &__link {
+    font-family: "Rock Salt", sans-serif;
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(61, 57, 68, 1);
+
+    span:first-child {
+      font-size: 3.5rem;
+    }
+    @media screen and (max-width: 590px){
+      width: 100%;
+      flex-direction: row;
+      column-gap: 15px;
+      margin-bottom: 20px;
+      span:first-child {
+        font-size: 2.5rem;
+      }
+    }
+    @media screen and (max-width: 383px){
+      font-size: 1.3rem;
+    }
+  }
+}
+
+.info {
+  max-width: 210px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.325rem;
+  margin-right: 40px;
+
+  @media screen and (max-width: 590px) {
+    flex-direction: row;
+    font-size: 1.125rem;
+    column-gap: 10px;
+    max-width: 100%;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  &__top-row, &__bottom-row{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    justify-content: space-between;
+
+    @media screen and (max-width: 590px) {
+      column-gap: 5px;
+      flex-wrap: wrap;
+      flex: 1 1 auto;
+      justify-content: unset;
+    }
+  }
+
+  &__start, &__reset, &__score {
+    height: 30px;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3a944e;
+    border-radius: 5px;
+    color: lightyellow;
+
+    @media screen and (max-width: 590px) {
+      padding: 3px;
+      width: initial;
+      flex: 1 1 auto;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  &__reset {
+    background-color: rgba(92,79,99,1);
+  }
+  &__score {
+    //background-color: rgba(61, 57, 68, 0.9);
+    width: 100%;
+    @media screen and (max-width: 590px) {
+      width: initial;
+    }
+  }
+
+  &__start {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(218,61,42, 0.8);
+  }
+}
+
+.moves, .time {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100px;
+  //background-color: #d0ac4c;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  color: #3d3944;
+  font-weight: bold;
+  outline: 2px solid rgba(61, 57, 68, 1);
+
+  @media screen and (max-width: 590px) {
+    flex-direction: row;
+    column-gap: 5px;
+    height: 35px;
+    margin-bottom: 0;
+  }
+}
+
+.time {
+  &__count {
+    letter-spacing: 1px;
+  }
+}
+
+
+.tiles__container {
+}
+
+.tiles {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+
+.row {
+  display: flex;
+  flex: 0 1 auto;
+  width: 100%;
+  height: 100%;
+}
+
+.cell {
+  flex: 1 1 25%;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 10px;
+  border-radius: 5px;
+  font-family: "Architects Daughter", sans-serif;
+  font-weight: bold;
+  font-size: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3d3944;
+  outline: 2px solid rgba(61, 57, 68, 1);
+  transform: translate(0, 0);
+  z-index: 2;
+
+  &_animate {
+    transition: transform 0.25s ease-in-out;
+  }
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  &:before {
+    content: '';
+    display: block;
+    padding-top: 100%;
+  }
+
+  &:not(.empty):hover {
+    cursor: pointer;
+  }
+
+  @media screen and (max-width: 400px) {
+    font-size: 3rem;
+  }
+
+  &_5 {
+    @media screen and (max-width: 560px) {
+      font-size: 3.5rem;
+    }
+    @media screen and (max-width: 490px) {
+      font-size: 3rem;
+      border-radius: 7px;
+      -webkit-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      -moz-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+    }
+    @media screen and (max-width: 400px) {
+      border-radius: 5px;
+      font-size: 2.25rem;
+      margin-bottom: 5px;
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &_6 {
+    font-size: 2.75rem;
+    @media screen and (max-width: 560px) {
+      font-size: 2.4rem;
+    }
+    @media screen and (max-width: 490px) {
+      font-size: 2rem;
+      border-radius: 8px;
+      -webkit-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      -moz-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      margin-bottom: 7px;
+      &:not(:last-child) {
+        margin-right: 7px;
+      }
+    }
+    @media screen and (max-width: 400px) {
+      font-size: 1.75rem;
+      border-radius: 5px;
+
+      margin-bottom: 5px;
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &_7 {
+    font-size: 2.25rem;
+    border-radius: 6px;
+    @media screen and (max-width: 560px) {
+      font-size: 2rem;
+    }
+    @media screen and (max-width: 490px) {
+      font-size: 2rem;
+      -webkit-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      -moz-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      margin-bottom: 7px;
+      &:not(:last-child) {
+        margin-right: 7px;
+      }
+    }
+    @media screen and (max-width: 450px) {
+      font-size: 1.6rem;
+    }
+    @media screen and (max-width: 400px) {
+      font-size: 1.25rem;
+      border-radius: 4px;
+      margin-bottom: 5px;
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &_8 {
+    border-radius: 6px;
+    font-size: 2rem;
+    @media screen and (max-width: 560px) {
+      font-size: 1.8rem;
+      margin-bottom: 7px;
+      &:not(:last-child) {
+        margin-right: 7px;
+      }
+    }
+    @media screen and (max-width: 490px) {
+      font-size: 1.5rem;
+      -webkit-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      -moz-box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      box-shadow: -4px -4px 3px 0px rgba(154, 154, 154, 0.7) inset;
+      margin-bottom: 5px;
+      &:not(:last-child) {
+        margin-right: 5px;
+      }
+    }
+    @media screen and (max-width: 450px) {
+      font-size: 1.2rem;
+    }
+    @media screen and (max-width: 400px) {
+      font-size: 1rem;
+      border-radius: 3px;
+      margin-bottom: 3px;
+      &:not(:last-child) {
+        margin-right: 3px;
+      }
+    }
+  }
+}
+.empty {
+  background-color: rgba(92, 79, 99, 1);
+  outline: 2px solid rgba(61, 57, 68, 1);
+  color: transparent;
+  position: relative;
+  z-index: 1;
+}
+
+
+.frame-size {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  color: #3d3944;
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.125rem;
+}
+
+.size{
+  margin-left: 5px;
+}
+.size-list {
+  color: #3d3944;
+  font-family: "Architects Daughter", sans-serif;
+  font-size: 1.325rem;
+  @media screen and (max-width: 530px){
+    font-size: 1.125rem;
+  }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #3d3944;
+    padding: 0 5px;
+  }
+}
+
+.other-sizes {
+  display: flex;
+  justify-content: center;
+  @media screen and (max-width: 590px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.other-size {
+  &:hover, &_active {
+    border-radius: 3px;
+    background-color: #3a944e;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.top-result__container{
+  z-index: 1;
+  min-width: 320px;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  background: url("./img/wallpaper.jpg") center center;
+  background-size: cover;
+  position: fixed;
+  border-radius: 5px;
+  left: 0;
+  right: 0;
+  transition: top 0.5s ease-in-out;
+}
+
+.close-btn{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 75px;
+  height: 75px;
+  background-image: url("./img/cross.svg");
+  background-size: 75px 75px;
+  cursor: pointer;
+
+  &:hover:before {
+    background-color: #d2d1d7 !important;
+  }
+
+  &:before {
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: -1;
+    content: "";
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    display: block;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+  }
+  @media screen and (max-width: 560px) {
+    width: 50px;
+    height: 50px;
+    background-size: 50px 50px;
+
+    &:before {
+      width: 25px;
+      height: 25px;
+      top: calc(50% - 12.5px);
+      left: calc(50% - 12.5px);
+    }
+  }
+  @media screen and (max-width: 450px) {
+    width: 40px;
+    height: 40px;
+    background-size: 40px 40px;
+
+    &:before {
+      width: 20px;
+      height: 20px;
+      top: calc(50% - 10px);
+      left: calc(50% - 10px);
+    }
+  }
+}
+
+.board {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &__title {
+    font-family: "Rock Salt", sans-serif;
+    font-size: 2rem;
+    background-color: rgba(255, 255, 255, 0.65);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    @media screen and (max-width: 560px) {
+      font-size: 1.5rem;
+    }
+    @media screen and (max-width: 450px) {
+      font-size: 1.25rem;
+    }
+    @media screen and (max-width: 360px) {
+      font-size: 1rem;
+    }
+  }
+  &__list {
+    color: #d2d1d7;
+    font-family: "Architects Daughter", sans-serif;
+    font-size: 1.525rem;
+    @media screen and (max-width: 560px) {
+      font-size: 1.125rem;
+    }
+
+    &_no-result {
+      text-align: center;
+      padding: 80px 50px !important;
+      font-size: 2rem;
+
+      @media screen and (max-width: 560px) {
+        font-size: 1.5rem;
+        padding: 65px 35px !important
+      }
+      @media screen and (max-width: 450px) {
+        font-size: 1.25rem;
+      }
+      @media screen and (max-width: 360px) {
+        padding: 30px 20px !important;
+      }
+    }
+  }
+  &__list > li{
+    list-style: none;
+    margin-bottom: 5px;
+    padding: 8px 8px;
+    border-radius: 5px;
+    border: #d2d1d7 solid;
+    background-color: rgba(61, 57, 68, 0.7);
+  }
+  &__list > li > span {
+    font-weight: bold;
+    font-size: larger;
+  }
+}
+
+.victory {
+  max-width: 500px;
+  position: absolute;
+  top: 100%;
+  z-index: 10;
+  transition: top 1.5s ease-in-out;
+
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 0 15px;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__pusheen {
+    z-index: 10;
+    position: relative;
+    transition: all 0.5s ease-in-out;
+    img {
+      width: 100%;
+    }
+  }
+  &__text {
+    background: #ffeab9;
+    padding: 25px;
+    margin-top: -20px;
+    border-radius: 10px;
+    color: #4a280c;
+    font-family: "Architects Daughter", sans-serif;
+    font-size: 1.8rem;
+    text-align: center;
+    line-height: 150%;
+    border: 4px solid #4a280c;
+    transition: margin-top 0.1s linear;
+    @media screen and (max-width: 500px) {
+      font-size: 1.15rem;
+    }
+  }
+  &__text > span {
+    font-weight: bolder;
+  }
+  .play-again {
+    padding: 10px 20px;
+    background-color: #bae8f4;
+    color: black;
+    font-weight: bolder;
+    letter-spacing: 2px;
+    font-family: "Architects Daughter", sans-serif;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    border: 2px solid #4a280c;
+    margin-top: -26px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 135px;
+
+
+    &:hover {
+      cursor: pointer;
+      background-color: #abd6e1;
+    }
+  }
+}
